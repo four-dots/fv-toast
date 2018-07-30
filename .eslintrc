@@ -1,0 +1,28 @@
+{
+    "env": {
+        "node": true,
+        "es6": true,
+        "jquery": true
+    },
+    "rules": {
+        "semi": [2, "always"],
+        "strict": 0,
+        "quotes": [1, "single", "avoid-escape"],
+        "no-use-before-define": 0,
+        "curly": 0,
+        "no-underscore-dangle": 0,
+        "no-lonely-if": 1,
+        "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],
+        "no-mixed-requires": 0,
+        "space-infix-ops": 0
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "modules": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "plugins": ["html", "vue"]
+}
