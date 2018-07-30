@@ -16,12 +16,14 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "dependencies": {
-        "lodash": "^4.17.5",
-        "bulma": "^0.7.*"
+        "bulma": "^0.7.*",
+        "lodash": "^4.17.5"
     },
     "devDependencies": {
-        "vue": "^2.5.16",
+        "browser-sync": "^2.24.6",
+        "browser-sync-webpack-plugin": "2.0.1",
+        "cross-env": "^5.0.0",
         "laravel-mix": "^2.1.11",
-        "cross-env": "^5.0.0"
+        "vue": "^2.5.16"
     }
 }

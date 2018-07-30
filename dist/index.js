@@ -336,8 +336,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        title: String
+    },
+    data: function data() {
+        return {
+            open: false
+        };
+    },
+
+    methods: {
+        toggle: function toggle() {
+            this.open = !this.open;
+        }
+    }
+});
 
 /***/ }),
 /* 8 */
@@ -347,7 +377,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { staticClass: "bv-accordion" }, [
+    _c("header", { staticClass: "bv-accordion_header" }, [
+      _c(
+        "div",
+        { staticClass: "bv-accordion_toggle", on: { click: _vm.toggle } },
+        [_vm._v("\n            +\n        ")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "bv-accordion_title" }, [
+        _c("h3", { staticClass: "title is-3" }, [_vm._v(_vm._s(_vm.title))])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "bv-accordion_actions" }, [_vm._t("actions")], 2)
+    ]),
+    _vm._v(" "),
+    _vm.open
+      ? _c(
+          "article",
+          { staticClass: "bv-accordion_content content" },
+          [_vm._t("content")],
+          2
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
