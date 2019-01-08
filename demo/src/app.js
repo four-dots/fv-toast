@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import Accordion from '../../dist/index.js';
+import AccordionPlugin from '../../src/index.js';
 
-Vue.use(Accordion);
+Vue.use(AccordionPlugin);
 
-const vue = new Vue({
+new Vue({
     el: '#app',
 });

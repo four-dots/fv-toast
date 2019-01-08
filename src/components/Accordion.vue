@@ -4,7 +4,7 @@
             <div class="bv-accordion_toggle" @click="toggle">
                 +
             </div>
-            <div class="bv-accordion_title">
+            <div class="bv-accordion_title" @click="toggle">
                 <h3 class="title is-3">{{ title }}</h3>
             </div>
             <div class="bv-accordion_actions">
@@ -34,3 +34,30 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+.bv-accordion_header {
+    display: flex;
+    align-items: center;
+}
+.bv-accordion_toggle {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+.bv-accordion_actions {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.bv-accordion_title {
+    flex-basis: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    cursor: pointer;
+
+    .title {
+        margin: 0;
+    }
+}
+</style>
