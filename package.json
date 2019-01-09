@@ -18,11 +18,14 @@
     "dependencies": {
         "bulma": "^0.7.2",
         "lodash": "^4.17.5",
+        "nanoid": "^2.0.0",
         "vue": "^2.5.16"
     },
     "devDependencies": {
         "cross-env": "^5.0.0",
         "laravel-mix": "^4.0.0",
+        "sass": "^1.15.2",
+        "sass-loader": "7.*",
         "stylelint-config-standard": "^18.0.0",
         "vue-template-compiler": "^2.5.21"
     }

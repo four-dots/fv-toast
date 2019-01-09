@@ -86,6 +86,43 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../node_modules/nanoid/index.browser.js":
+/*!***********************************************!*\
+  !*** ../node_modules/nanoid/index.browser.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+if (true) {
+  if (typeof self === 'undefined' || (!self.crypto && !self.msCrypto)) {
+    throw new Error(
+      'Your browser does not have secure random generator. ' +
+      'If you don’t need unpredictable IDs, you can use nanoid/non-secure.'
+    )
+  }
+}
+
+var crypto = self.crypto || self.msCrypto
+
+/*
+ * This alphabet uses a-z A-Z 0-9 _- symbols.
+ * Symbols order was changed for better gzip compression.
+ */
+var url = 'Uint8ArdomValuesObj012345679BCDEFGHIJKLMNPQRSTWXYZ_cfghkpqvwxyz-'
+
+module.exports = function (size) {
+  size = size || 21
+  var id = ''
+  var bytes = crypto.getRandomValues(new Uint8Array(size))
+  while (0 < size--) {
+    id += url[bytes[size] & 63]
+  }
+  return id
+}
+
+
+/***/ }),
+
 /***/ "../src/components/Accordion.vue":
 /*!***************************************!*\
   !*** ../src/components/Accordion.vue ***!
@@ -251,13 +288,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Accordions_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Accordions.vue */ "../src/components/Accordions.vue");
+/* harmony import */ var _components_Accordions_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Accordions.vue */ "../src/components/Accordions.vue");
 /* harmony import */ var _components_Accordion_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Accordion.vue */ "../src/components/Accordion.vue");
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   install: function install(Vue) {
-    Vue.component('Accordions', _components_Accordions_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
+    Vue.component('Accordions', _components_Accordions_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     Vue.component('Accordion', _components_Accordion_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
   }
 });
@@ -273,6 +310,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nanoid */ "../node_modules/nanoid/index.browser.js");
+/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(nanoid__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -292,18 +331,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    title: String
+    usesFontAwesome: {
+      default: true,
+      type: Boolean
+    }
   },
   data: function data() {
     return {
-      open: false
+      state: false,
+      id: nanoid__WEBPACK_IMPORTED_MODULE_0___default()()
     };
   },
   methods: {
     toggle: function toggle() {
-      this.open = !this.open;
+      this.state = !this.state;
+      this.$emit('toggle', this.state);
+    },
+    toggleFromOutside: function toggleFromOutside(value) {
+      this.state = value;
+      this.$emit('toggle', this.state);
     }
   }
 });
@@ -326,8 +378,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  created: function created() {
-    console.log(this.$refs);
+  props: {
+    single: {
+      default: true,
+      type: Boolean
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    if (!this.single) {
+      return;
+    }
+
+    var observer = new MutationObserver(function (mutations) {
+      _this.toggleAccordions(mutations[0]);
+    });
+    this.$nextTick(function () {
+      observer.observe(_this.$el, {
+        attributes: true,
+        attributeOldValue: true,
+        attributeFilter: ['data-state'],
+        subtree: true
+      });
+    });
+  },
+  methods: {
+    toggleAccordions: function toggleAccordions(mutation) {
+      var accordionData = mutation.target.dataset;
+      if (accordionData.state !== 'true') return;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.$children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var child = _step.value;
+          if (child.id === accordionData.id) continue;
+          child.toggleFromOutside(false);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
   }
 });
 
@@ -345,7 +449,7 @@ exports = module.exports = __webpack_require__(/*! ../../demo/node_modules/css-l
 
 
 // module
-exports.push([module.i, ".bv-accordion_header {\n  display: flex;\n  align-items: center;\n}\n.bv-accordion_toggle {\n  flex-grow: 0;\n  flex-shrink: 0;\n  margin-right: 1rem;\n  cursor: pointer;\n}\n.bv-accordion_actions {\n  flex-grow: 0;\n  flex-shrink: 0;\n}\n.bv-accordion_title {\n  flex-basis: 100%;\n  flex-grow: 1;\n  flex-shrink: 1;\n  cursor: pointer;\n}\n.bv-accordion_title .title {\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".bv-accordions .bv-accordion .bv-accordion_content {\n  margin-bottom: 0;\n}\n.bv-accordions .bv-accordion:last-child .bv-accordion_content {\n  margin-bottom: 0.5rem;\n}\n.bv-accordion_header {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem 0;\n}\n.bv-accordion_toggle {\n  flex-grow: 0;\n  flex-shrink: 0;\n  padding-right: 1rem;\n  cursor: pointer;\n  font-size: 0.75rem;\n}\n.bv-accordion_actions {\n  flex-grow: 1;\n  flex-shrink: 1;\n}\n.bv-accordion_title {\n  flex-basis: 100%;\n  flex-grow: 2;\n  flex-shrink: 1;\n  cursor: pointer;\n}\n.bv-accordion_title .title {\n  margin: 0;\n  line-height: 1;\n}\n.bv-accordion_content {\n  margin-bottom: 0.5rem;\n}", ""]);
 
 // exports
 
@@ -1461,32 +1565,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bv-accordion" }, [
-    _c("header", { staticClass: "bv-accordion_header" }, [
-      _c(
-        "div",
-        { staticClass: "bv-accordion_toggle", on: { click: _vm.toggle } },
-        [_vm._v("\n            +\n        ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "bv-accordion_title", on: { click: _vm.toggle } },
-        [_c("h3", { staticClass: "title is-3" }, [_vm._v(_vm._s(_vm.title))])]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "bv-accordion_actions" }, [_vm._t("actions")], 2)
-    ]),
-    _vm._v(" "),
-    _vm.open
-      ? _c(
-          "article",
-          { staticClass: "bv-accordion_content content" },
-          [_vm._t("content")],
+  return _c(
+    "section",
+    {
+      staticClass: "bv-accordion",
+      attrs: { "data-id": _vm.id, "data-state": _vm.state }
+    },
+    [
+      _c("header", { staticClass: "bv-accordion_header" }, [
+        _c(
+          "div",
+          { staticClass: "bv-accordion_toggle", on: { click: _vm.toggle } },
+          [
+            _vm.usesFontAwesome
+              ? [
+                  _c("span", { staticClass: "icon" }, [
+                    _c("i", {
+                      staticClass: "fas fal",
+                      class: [_vm.state ? "fa-minus" : "fa-plus"]
+                    })
+                  ])
+                ]
+              : [_vm._v(_vm._s(_vm.state ? "-" : "+"))]
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "bv-accordion_title", on: { click: _vm.toggle } },
+          [_vm._t("title")],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "bv-accordion_actions" },
+          [_vm._t("actions")],
           2
         )
-      : _vm._e()
-  ])
+      ]),
+      _vm._v(" "),
+      _vm.state
+        ? _c(
+            "article",
+            { staticClass: "bv-accordion_content content" },
+            [_vm._t("content")],
+            2
+          )
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1510,7 +1639,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._t("default")], 2)
+  return _c("section", { staticClass: "bv-accordions" }, [_vm._t("default")], 2)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -12764,7 +12893,16 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_src_index_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#app'
+  el: '#app',
+  data: {
+    accordions: [{
+      title: 'ASD dasd a',
+      content: 'sadwqqwd das dqw qdwdasdqw qdw'
+    }, {
+      title: 'DWEDA dasd a',
+      content: 'sadwqqwd das dqw qdwdasdqw qdw'
+    }]
+  }
 });
 
 /***/ }),
