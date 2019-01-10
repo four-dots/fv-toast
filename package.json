@@ -1,6 +1,6 @@
 {
     "name": "bulma-vue-accordion",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "unpkg": "dist/index.js",
@@ -12,13 +12,10 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "dev": "yarn run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "yarn run development --watch",
-        "watch-poll": "yarn run watch --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "yarn run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "build": "yarn run build:umd & yarn run build:es & yarn run build:unpkg",
+        "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/index.umd.js",
+        "build:es": "rollup --config build/rollup.config.js --format es --file dist/index.esm.js",
+        "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/index.min.js"
     },
     "dependencies": {
         "bulma": "^0.7.2",
@@ -27,10 +24,9 @@
         "vue": "^2.5.16"
     },
     "devDependencies": {
-        "cross-env": "^5.0.0",
-        "laravel-mix": "^4.0.0",
-        "sass": "^1.15.2",
-        "sass-loader": "7.*",
+        "rollup": "^0.57.1",
+        "rollup-plugin-buble": "^0.19.2",
+        "rollup-plugin-vue": "^3.0.0",
         "stylelint-config-standard": "^18.0.0",
         "vue-template-compiler": "^2.5.21"
     }

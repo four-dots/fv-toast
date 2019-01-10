@@ -86,533 +86,270 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "../dist/index.js":
-/*!************************!*\
-  !*** ../dist/index.js ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "../dist/index.esm.js":
+/*!****************************!*\
+  !*** ../dist/index.esm.js ***!
+  \****************************/
+/*! exports provided: default, Accordions, Accordion, version */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Accordions", function() { return Accordions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Accordion", function() { return Accordion; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "version", function() { return version; });
+/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nanoid */ "../node_modules/nanoid/index.browser.js");
+/* harmony import */ var nanoid__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(nanoid__WEBPACK_IMPORTED_MODULE_0__);
 
-!function (t) {
-  var e = {};
 
-  function n(r) {
-    if (e[r]) return e[r].exports;
-    var o = e[r] = {
-      i: r,
-      l: !1,
-      exports: {}
-    };
-    return t[r].call(o.exports, o, o.exports, n), o.l = !0, o.exports;
-  }
+(function () {
+  if (typeof document !== 'undefined') {
+    var head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style'),
+        css = "";
+    style.type = 'text/css';
 
-  n.m = t, n.c = e, n.d = function (t, e, r) {
-    n.o(t, e) || Object.defineProperty(t, e, {
-      enumerable: !0,
-      get: r
-    });
-  }, n.r = function (t) {
-    "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, {
-      value: "Module"
-    }), Object.defineProperty(t, "__esModule", {
-      value: !0
-    });
-  }, n.t = function (t, e) {
-    if (1 & e && (t = n(t)), 8 & e) return t;
-    if (4 & e && "object" == _typeof(t) && t && t.__esModule) return t;
-    var r = Object.create(null);
-    if (n.r(r), Object.defineProperty(r, "default", {
-      enumerable: !0,
-      value: t
-    }), 2 & e && "string" != typeof t) for (var o in t) {
-      n.d(r, o, function (e) {
-        return t[e];
-      }.bind(null, o));
-    }
-    return r;
-  }, n.n = function (t) {
-    var e = t && t.__esModule ? function () {
-      return t.default;
-    } : function () {
-      return t;
-    };
-    return n.d(e, "a", e), e;
-  }, n.o = function (t, e) {
-    return Object.prototype.hasOwnProperty.call(t, e);
-  }, n.p = "/", n(n.s = 2);
-}([function (t, e, n) {
-  var r = n(4);
-  "string" == typeof r && (r = [[t.i, r, ""]]);
-  var o = {
-    hmr: !0,
-    transform: void 0,
-    insertInto: void 0
-  };
-  n(6)(r, o);
-  r.locals && (t.exports = r.locals);
-}, function (t, e, n) {
-  var r = self.crypto || self.msCrypto;
-
-  t.exports = function (t) {
-    t = t || 21;
-
-    for (var e = "", n = r.getRandomValues(new Uint8Array(t)); 0 < t--;) {
-      e += "Uint8ArdomValuesObj012345679BCDEFGHIJKLMNPQRSTWXYZ_cfghkpqvwxyz-"[63 & n[t]];
-    }
-
-    return e;
-  };
-}, function (t, e, n) {
-  t.exports = n(8);
-}, function (t, e, n) {
-  "use strict";
-
-  var r = n(0);
-  n.n(r).a;
-}, function (t, e, n) {
-  (t.exports = n(5)(!1)).push([t.i, ".bv-accordions .bv-accordion .bv-accordion_content {\n  margin-bottom: 0;\n}\n.bv-accordions .bv-accordion:last-child .bv-accordion_content {\n  margin-bottom: 0.5rem;\n}\n.bv-accordion_header {\n  display: flex;\n  align-items: center;\n  padding: 0.5rem 0;\n}\n.bv-accordion_toggle {\n  flex-grow: 0;\n  flex-shrink: 0;\n  padding-right: 1rem;\n  cursor: pointer;\n  font-size: 0.75rem;\n}\n.bv-accordion_actions {\n  flex-grow: 1;\n  flex-shrink: 1;\n}\n.bv-accordion_title {\n  flex-basis: 100%;\n  flex-grow: 2;\n  flex-shrink: 1;\n  cursor: pointer;\n}\n.bv-accordion_title .title {\n  margin: 0;\n  line-height: 1;\n}\n.bv-accordion_content {\n  margin-bottom: 0.5rem;\n}", ""]);
-}, function (t, e) {
-  t.exports = function (t) {
-    var e = [];
-    return e.toString = function () {
-      return this.map(function (e) {
-        var n = function (t, e) {
-          var n = t[1] || "",
-              r = t[3];
-          if (!r) return n;
-
-          if (e && "function" == typeof btoa) {
-            var o = (s = r, "/*# sourceMappingURL=data:application/json;charset=utf-8;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(s)))) + " */"),
-                i = r.sources.map(function (t) {
-              return "/*# sourceURL=" + r.sourceRoot + t + " */";
-            });
-            return [n].concat(i).concat([o]).join("\n");
-          }
-
-          var s;
-          return [n].join("\n");
-        }(e, t);
-
-        return e[2] ? "@media " + e[2] + "{" + n + "}" : n;
-      }).join("");
-    }, e.i = function (t, n) {
-      "string" == typeof t && (t = [[null, t, ""]]);
-
-      for (var r = {}, o = 0; o < this.length; o++) {
-        var i = this[o][0];
-        "number" == typeof i && (r[i] = !0);
-      }
-
-      for (o = 0; o < t.length; o++) {
-        var s = t[o];
-        "number" == typeof s[0] && r[s[0]] || (n && !s[2] ? s[2] = n : n && (s[2] = "(" + s[2] + ") and (" + n + ")"), e.push(s));
-      }
-    }, e;
-  };
-}, function (t, e, n) {
-  var r,
-      o,
-      i = {},
-      s = (r = function r() {
-    return window && document && document.all && !window.atob;
-  }, function () {
-    return void 0 === o && (o = r.apply(this, arguments)), o;
-  }),
-      a = function (t) {
-    var e = {};
-    return function (t, n) {
-      if ("function" == typeof t) return t();
-
-      if (void 0 === e[t]) {
-        var r = function (t, e) {
-          return e ? e.querySelector(t) : document.querySelector(t);
-        }.call(this, t, n);
-
-        if (window.HTMLIFrameElement && r instanceof window.HTMLIFrameElement) try {
-          r = r.contentDocument.head;
-        } catch (t) {
-          r = null;
-        }
-        e[t] = r;
-      }
-
-      return e[t];
-    };
-  }(),
-      c = null,
-      l = 0,
-      u = [],
-      f = n(7);
-
-  function d(t, e) {
-    for (var n = 0; n < t.length; n++) {
-      var r = t[n],
-          o = i[r.id];
-
-      if (o) {
-        o.refs++;
-
-        for (var s = 0; s < o.parts.length; s++) {
-          o.parts[s](r.parts[s]);
-        }
-
-        for (; s < r.parts.length; s++) {
-          o.parts.push(g(r.parts[s], e));
-        }
-      } else {
-        var a = [];
-
-        for (s = 0; s < r.parts.length; s++) {
-          a.push(g(r.parts[s], e));
-        }
-
-        i[r.id] = {
-          id: r.id,
-          refs: 1,
-          parts: a
-        };
-      }
-    }
-  }
-
-  function p(t, e) {
-    for (var n = [], r = {}, o = 0; o < t.length; o++) {
-      var i = t[o],
-          s = e.base ? i[0] + e.base : i[0],
-          a = {
-        css: i[1],
-        media: i[2],
-        sourceMap: i[3]
-      };
-      r[s] ? r[s].parts.push(a) : n.push(r[s] = {
-        id: s,
-        parts: [a]
-      });
-    }
-
-    return n;
-  }
-
-  function v(t, e) {
-    var n = a(t.insertInto);
-    if (!n) throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-    var r = u[u.length - 1];
-    if ("top" === t.insertAt) r ? r.nextSibling ? n.insertBefore(e, r.nextSibling) : n.appendChild(e) : n.insertBefore(e, n.firstChild), u.push(e);else if ("bottom" === t.insertAt) n.appendChild(e);else {
-      if ("object" != _typeof(t.insertAt) || !t.insertAt.before) throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");
-      var o = a(t.insertAt.before, n);
-      n.insertBefore(e, o);
-    }
-  }
-
-  function h(t) {
-    if (null === t.parentNode) return !1;
-    t.parentNode.removeChild(t);
-    var e = u.indexOf(t);
-    e >= 0 && u.splice(e, 1);
-  }
-
-  function b(t) {
-    var e = document.createElement("style");
-
-    if (void 0 === t.attrs.type && (t.attrs.type = "text/css"), void 0 === t.attrs.nonce) {
-      var r = function () {
-        0;
-        return n.nc;
-      }();
-
-      r && (t.attrs.nonce = r);
-    }
-
-    return m(e, t.attrs), v(t, e), e;
-  }
-
-  function m(t, e) {
-    Object.keys(e).forEach(function (n) {
-      t.setAttribute(n, e[n]);
-    });
-  }
-
-  function g(t, e) {
-    var n, r, o, i;
-
-    if (e.transform && t.css) {
-      if (!(i = "function" == typeof e.transform ? e.transform(t.css) : e.transform.default(t.css))) return function () {};
-      t.css = i;
-    }
-
-    if (e.singleton) {
-      var s = l++;
-      n = c || (c = b(e)), r = x.bind(null, n, s, !1), o = x.bind(null, n, s, !0);
-    } else t.sourceMap && "function" == typeof URL && "function" == typeof URL.createObjectURL && "function" == typeof URL.revokeObjectURL && "function" == typeof Blob && "function" == typeof btoa ? (n = function (t) {
-      var e = document.createElement("link");
-      return void 0 === t.attrs.type && (t.attrs.type = "text/css"), t.attrs.rel = "stylesheet", m(e, t.attrs), v(t, e), e;
-    }(e), r = function (t, e, n) {
-      var r = n.css,
-          o = n.sourceMap,
-          i = void 0 === e.convertToAbsoluteUrls && o;
-      (e.convertToAbsoluteUrls || i) && (r = f(r));
-      o && (r += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(o)))) + " */");
-      var s = new Blob([r], {
-        type: "text/css"
-      }),
-          a = t.href;
-      t.href = URL.createObjectURL(s), a && URL.revokeObjectURL(a);
-    }.bind(null, n, e), o = function o() {
-      h(n), n.href && URL.revokeObjectURL(n.href);
-    }) : (n = b(e), r = function (t, e) {
-      var n = e.css,
-          r = e.media;
-      r && t.setAttribute("media", r);
-      if (t.styleSheet) t.styleSheet.cssText = n;else {
-        for (; t.firstChild;) {
-          t.removeChild(t.firstChild);
-        }
-
-        t.appendChild(document.createTextNode(n));
-      }
-    }.bind(null, n), o = function o() {
-      h(n);
-    });
-
-    return r(t), function (e) {
-      if (e) {
-        if (e.css === t.css && e.media === t.media && e.sourceMap === t.sourceMap) return;
-        r(t = e);
-      } else o();
-    };
-  }
-
-  t.exports = function (t, e) {
-    if ("undefined" != typeof DEBUG && DEBUG && "object" != (typeof document === "undefined" ? "undefined" : _typeof(document))) throw new Error("The style-loader cannot be used in a non-browser environment");
-    (e = e || {}).attrs = "object" == _typeof(e.attrs) ? e.attrs : {}, e.singleton || "boolean" == typeof e.singleton || (e.singleton = s()), e.insertInto || (e.insertInto = "head"), e.insertAt || (e.insertAt = "bottom");
-    var n = p(t, e);
-    return d(n, e), function (t) {
-      for (var r = [], o = 0; o < n.length; o++) {
-        var s = n[o];
-        (a = i[s.id]).refs--, r.push(a);
-      }
-
-      t && d(p(t, e), e);
-
-      for (o = 0; o < r.length; o++) {
-        var a;
-
-        if (0 === (a = r[o]).refs) {
-          for (var c = 0; c < a.parts.length; c++) {
-            a.parts[c]();
-          }
-
-          delete i[a.id];
-        }
-      }
-    };
-  };
-
-  var y,
-      _ = (y = [], function (t, e) {
-    return y[t] = e, y.filter(Boolean).join("\n");
-  });
-
-  function x(t, e, n, r) {
-    var o = n ? "" : r.css;
-    if (t.styleSheet) t.styleSheet.cssText = _(e, o);else {
-      var i = document.createTextNode(o),
-          s = t.childNodes;
-      s[e] && t.removeChild(s[e]), s.length ? t.insertBefore(i, s[e]) : t.appendChild(i);
-    }
-  }
-}, function (t, e) {
-  t.exports = function (t) {
-    var e = "undefined" != typeof window && window.location;
-    if (!e) throw new Error("fixUrls requires window.location");
-    if (!t || "string" != typeof t) return t;
-    var n = e.protocol + "//" + e.host,
-        r = n + e.pathname.replace(/\/[^\/]*$/, "/");
-    return t.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function (t, e) {
-      var o,
-          i = e.trim().replace(/^"(.*)"$/, function (t, e) {
-        return e;
-      }).replace(/^'(.*)'$/, function (t, e) {
-        return e;
-      });
-      return /^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(i) ? t : (o = 0 === i.indexOf("//") ? i : 0 === i.indexOf("/") ? n + i : r + i.replace(/^\.\//, ""), "url(" + JSON.stringify(o) + ")");
-    });
-  };
-}, function (t, e, n) {
-  "use strict";
-
-  n.r(e);
-
-  function r(t, e, n, r, o, i, s, a) {
-    var c,
-        l = "function" == typeof t ? t.options : t;
-    if (e && (l.render = e, l.staticRenderFns = n, l._compiled = !0), r && (l.functional = !0), i && (l._scopeId = "data-v-" + i), s ? (c = function c(t) {
-      (t = t || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) || "undefined" == typeof __VUE_SSR_CONTEXT__ || (t = __VUE_SSR_CONTEXT__), o && o.call(this, t), t && t._registeredComponents && t._registeredComponents.add(s);
-    }, l._ssrRegister = c) : o && (c = a ? function () {
-      o.call(this, this.$root.$options.shadowRoot);
-    } : o), c) if (l.functional) {
-      l._injectStyles = c;
-      var u = l.render;
-
-      l.render = function (t, e) {
-        return c.call(e), u(t, e);
-      };
+    if (style.styleSheet) {
+      style.styleSheet.cssText = css;
     } else {
-      var f = l.beforeCreate;
-      l.beforeCreate = f ? [].concat(f, c) : [c];
+      style.appendChild(document.createTextNode(css));
     }
-    return {
-      exports: t,
-      options: l
-    };
+
+    head.appendChild(style);
   }
+})();
 
-  var o = r({
-    props: {
-      single: {
-        default: !0,
-        type: Boolean
-      }
-    },
-    mounted: function mounted() {
-      var t = this;
+var Accordions = {
+  render: function render() {
+    var _vm = this;
 
-      if (this.single) {
-        var e = !1,
-            n = !0,
-            r = !1,
-            o = void 0;
+    var _h = _vm.$createElement;
 
-        try {
-          for (var i, s = this.$children[Symbol.iterator](); !(n = (i = s.next()).done); n = !0) {
-            var a = i.value;
-            e || !0 !== a.state ? e && a.toggleFromOutside(!1) : e = !0;
-          }
-        } catch (t) {
-          r = !0, o = t;
-        } finally {
-          try {
-            n || null == s.return || s.return();
-          } finally {
-            if (r) throw o;
-          }
-        }
+    var _c = _vm._self._c || _h;
 
-        var c = new MutationObserver(function (e) {
-          t.toggleAccordions(e[0]);
-        });
-        this.$nextTick(function () {
-          c.observe(t.$el, {
-            attributes: !0,
-            attributeOldValue: !0,
-            attributeFilter: ["data-state"],
-            subtree: !0
-          });
-        });
-      }
-    },
-    methods: {
-      toggleAccordions: function toggleAccordions(t) {
-        var e = t.target.dataset;
-
-        if ("true" === e.state) {
-          var n = !0,
-              r = !1,
-              o = void 0;
-
-          try {
-            for (var i, s = this.$children[Symbol.iterator](); !(n = (i = s.next()).done); n = !0) {
-              var a = i.value;
-              a.id !== e.id && a.toggleFromOutside(!1);
-            }
-          } catch (t) {
-            r = !0, o = t;
-          } finally {
-            try {
-              n || null == s.return || s.return();
-            } finally {
-              if (r) throw o;
-            }
-          }
-        }
-      }
-    }
-  }, function () {
-    var t = this.$createElement;
-    return (this._self._c || t)("section", {
+    return _c('section', {
       staticClass: "bv-accordions"
-    }, [this._t("default")], 2);
-  }, [], !1, null, null, null);
-  o.options.__file = "Accordions.vue";
-  var i = o.exports,
-      s = n(1),
-      a = n.n(s),
-      c = {
-    props: {
-      usesFontAwesome: {
-        default: !0,
-        type: Boolean,
-        open: !1
-      }
-    },
-    data: function data() {
-      return {
-        state: this.open,
-        id: a()()
-      };
-    },
-    methods: {
-      toggle: function toggle() {
-        this.state = !this.state, this.$emit("toggle", this.state);
-      },
-      toggleFromOutside: function toggleFromOutside(t) {
-        this.state = t, this.$emit("toggle", this.state);
-      }
+    }, [_vm._t("default")], 2);
+  },
+  staticRenderFns: [],
+  props: {
+    single: {
+      default: true,
+      type: Boolean
     }
   },
-      l = (n(3), r(c, function () {
-    var t = this,
-        e = t.$createElement,
-        n = t._self._c || e;
-    return n("section", {
+  mounted: function mounted() {
+    var _this = this;
+
+    if (!this.single) {
+      return;
+    }
+
+    var isAnyOpen = false;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = this.$children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var child = _step.value;
+
+        if (!isAnyOpen && child.state === true) {
+          isAnyOpen = true;
+          continue;
+        }
+
+        if (!isAnyOpen) continue;
+        child.toggleFromOutside(false);
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    var observer = new MutationObserver(function (mutations) {
+      _this.toggleAccordions(mutations[0]);
+    });
+    this.$nextTick(function () {
+      observer.observe(_this.$el, {
+        attributes: true,
+        attributeOldValue: true,
+        attributeFilter: ['data-state'],
+        subtree: true
+      });
+    });
+  },
+  methods: {
+    toggleAccordions: function toggleAccordions(mutation) {
+      var accordionData = mutation.target.dataset;
+      if (accordionData.state !== 'true') return;
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = this.$children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var child = _step2.value;
+          if (child.id === accordionData.id) continue;
+          child.toggleFromOutside(false);
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+    }
+  }
+};
+
+(function () {
+  if (typeof document !== 'undefined') {
+    var head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style'),
+        css = ".bv-accordions .bv-accordion .bv-accordion_content { margin-bottom: 0; } .bv-accordions .bv-accordion:last-child .bv-accordion_content { margin-bottom: 0.5rem; } .bv-accordion_header { display: flex; align-items: center; padding: 0.5rem 0; } .bv-accordion_toggle { flex-grow: 0; flex-shrink: 0; padding-right: 1rem; cursor: pointer; font-size: 0.75rem; } .bv-accordion_actions { flex-grow: 1; flex-shrink: 1; } .bv-accordion_title { flex-basis: 100%; flex-grow: 2; flex-shrink: 1; cursor: pointer; } .bv-accordion_title .title { margin: 0; line-height: 1; } .bv-accordion_content { margin-bottom: 0.5rem; } ";
+    style.type = 'text/css';
+
+    if (style.styleSheet) {
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+
+    head.appendChild(style);
+  }
+})();
+
+var Accordion = {
+  render: function render() {
+    var _vm = this;
+
+    var _h = _vm.$createElement;
+
+    var _c = _vm._self._c || _h;
+
+    return _c('section', {
       staticClass: "bv-accordion",
       attrs: {
-        "data-id": t.id,
-        "data-state": t.state
+        "data-id": _vm.id,
+        "data-state": _vm.state
       }
-    }, [n("header", {
+    }, [_c('header', {
       staticClass: "bv-accordion_header"
-    }, [n("div", {
+    }, [_c('div', {
       staticClass: "bv-accordion_toggle",
       on: {
-        click: t.toggle
+        "click": _vm.toggle
       }
-    }, [t.usesFontAwesome ? [n("span", {
+    }, [_vm.usesFontAwesome ? [_c('span', {
       staticClass: "icon"
-    }, [n("i", {
+    }, [_c('i', {
       staticClass: "fas fal",
-      class: [t.state ? "fa-minus" : "fa-plus"]
-    })])] : [t._v(t._s(t.state ? "-" : "+"))]], 2), t._v(" "), n("div", {
+      class: [_vm.state ? 'fa-minus' : 'fa-plus']
+    })])] : [_vm._v(_vm._s(_vm.state ? '-' : '+'))]], 2), _vm._v(" "), _c('div', {
       staticClass: "bv-accordion_title",
       on: {
-        click: t.toggle
+        "click": _vm.toggle
       }
-    }, [t._t("title")], 2), t._v(" "), n("div", {
+    }, [_vm._t("title")], 2), _vm._v(" "), _c('div', {
       staticClass: "bv-accordion_actions"
-    }, [t._t("actions")], 2)]), t._v(" "), t.state ? n("article", {
+    }, [_vm._t("actions")], 2)]), _vm._v(" "), _vm.state ? _c('article', {
       staticClass: "bv-accordion_content content"
-    }, [t._t("content")], 2) : t._e()]);
-  }, [], !1, null, null, null));
-  l.options.__file = "Accordion.vue";
-  var u = l.exports;
-  e.default = {
-    install: function install(t) {
-      t.component("Accordions", i), t.component("Accordion", u);
+    }, [_vm._t("content")], 2) : _vm._e()]);
+  },
+  staticRenderFns: [],
+  props: {
+    usesFontAwesome: {
+      default: true,
+      type: Boolean,
+      open: false
     }
-  };
-}]);
+  },
+  data: function data() {
+    return {
+      state: this.open,
+      id: nanoid__WEBPACK_IMPORTED_MODULE_0___default()()
+    };
+  },
+  methods: {
+    toggle: function toggle() {
+      this.state = !this.state;
+      this.$emit('toggle', this.state);
+    },
+    toggleFromOutside: function toggleFromOutside(value) {
+      this.state = value;
+      this.$emit('toggle', this.state);
+    }
+  }
+};
+
+function plugin(Vue) {
+  Vue.component('Accordions', Accordions);
+  Vue.component('Accordion', Accordion);
+}
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(plugin);
+}
+
+var version = '__VERSION__';
+/* harmony default export */ __webpack_exports__["default"] = (plugin);
+
+
+/***/ }),
+
+/***/ "../node_modules/nanoid/index.browser.js":
+/*!***********************************************!*\
+  !*** ../node_modules/nanoid/index.browser.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+if (true) {
+  if (typeof self === 'undefined' || (!self.crypto && !self.msCrypto)) {
+    throw new Error(
+      'Your browser does not have secure random generator. ' +
+      'If you don’t need unpredictable IDs, you can use nanoid/non-secure.'
+    )
+  }
+}
+
+var crypto = self.crypto || self.msCrypto
+
+/*
+ * This alphabet uses a-z A-Z 0-9 _- symbols.
+ * Symbols order was changed for better gzip compression.
+ */
+var url = 'Uint8ArdomValuesObj012345679BCDEFGHIJKLMNPQRSTWXYZ_cfghkpqvwxyz-'
+
+module.exports = function (size) {
+  size = size || 21
+  var id = ''
+  var bytes = crypto.getRandomValues(new Uint8Array(size))
+  while (0 < size--) {
+    id += url[bytes[size] & 63]
+  }
+  return id
+}
+
 
 /***/ }),
 
@@ -12217,11 +11954,10 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _dist_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../dist/index.js */ "../dist/index.js");
-/* harmony import */ var _dist_index_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_dist_index_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _dist_index_esm_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../dist/index.esm.js */ "../dist/index.esm.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_dist_index_js__WEBPACK_IMPORTED_MODULE_1___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(_dist_index_esm_js__WEBPACK_IMPORTED_MODULE_1__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: {
