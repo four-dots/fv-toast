@@ -1,20 +1,20 @@
 <template>
     <section class="bv-accordion" :data-id="id" :data-state="state">
-        <header class="bv-accordion_header">
-            <div class="bv-accordion_toggle" @click="toggle">
+        <header class="bv-accordion__header">
+            <div class="bv-accordion__toggle" @click="toggle">
                 <template v-if="usesFontAwesome">
                     <span class="icon"><i class="fas fal" :class="[state ? 'fa-minus' : 'fa-plus']"></i></span>
                 </template>
                 <template v-else>{{ state ? '-' : '+' }}</template>
             </div>
-            <div class="bv-accordion_title" @click="toggle">
+            <div class="bv-accordion__title" @click="toggle">
                 <slot name="title"></slot>
             </div>
-            <div class="bv-accordion_actions">
+            <div class="bv-accordion__actions">
                 <slot name="actions"></slot>
             </div>
         </header>
-        <article v-if="state" class="bv-accordion_content content">
+        <article v-if="state" class="bv-accordion__content content">
             <slot name="content"></slot>
         </article>
     </section>
@@ -52,31 +52,31 @@ export default {
 
 <style lang="scss">
 .bv-accordion {
-    .bv-accordions & .bv-accordion_content {
+    .bv-accordions & .bv-accordion__content {
         margin-bottom: 0;
     }
 
-    .bv-accordions &:last-child .bv-accordion_content {
+    .bv-accordions &:last-child .bv-accordion__content {
         margin-bottom: 0.5rem;
     }
 }
-.bv-accordion_header {
+.bv-accordion__header {
     display: flex;
     align-items: center;
     padding: 0.5rem 0;
 }
-.bv-accordion_toggle {
+.bv-accordion__toggle {
     flex-grow: 0;
     flex-shrink: 0;
-    padding-right: 1rem;
+    padding-right: 0.5rem;
     cursor: pointer;
     font-size: 0.75rem;
 }
-.bv-accordion_actions {
+.bv-accordion__actions {
     flex-grow: 1;
     flex-shrink: 1;
 }
-.bv-accordion_title {
+.bv-accordion__title {
     flex-basis: 100%;
     flex-grow: 2;
     flex-shrink: 1;
@@ -87,7 +87,7 @@ export default {
         line-height: 1;
     }
 }
-.bv-accordion_content {
+.bv-accordion__content {
     margin-bottom: 0.5rem;
 }
 </style>
