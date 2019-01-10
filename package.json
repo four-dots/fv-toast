@@ -1,7 +1,12 @@
 {
     "name": "bulma-vue-accordion",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "main": "dist/index.js",
+    "module": "dist/index.js",
+    "unpkg": "dist/index.js",
+    "browser": {
+        "./sfc": "src/index.js"
+    },
     "repository": "git@bitbucket.org:fourdots/bulma-vue-accordion.git",
     "author": "Kristijan Novaković <kristijan.novakovic@fourdots.co>",
     "license": "MIT",

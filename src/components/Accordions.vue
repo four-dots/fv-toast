@@ -17,6 +17,16 @@ export default {
             return;
         }
 
+        let isAnyOpen = false;
+        for (const child of this.$children) {
+            if (!isAnyOpen && child.state === true) {
+                isAnyOpen = true;
+                continue;
+            }
+            if (!isAnyOpen) continue;
+            child.toggleFromOutside(false);
+        }
+
         const observer = new MutationObserver(mutations => {
             this.toggleAccordions(mutations[0]);
         });

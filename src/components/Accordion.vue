@@ -28,11 +28,12 @@ export default {
         usesFontAwesome: {
             default: true,
             type: Boolean,
+            open: false,
         },
     },
     data() {
         return {
-            state: false,
+            state: this.open,
             id: nanoid(),
         };
     },

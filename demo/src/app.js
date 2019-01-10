@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import AccordionPlugin from '../../src/index.js';
+import AccordionPlugin from '../../dist/index.js';
 
 Vue.use(AccordionPlugin);
 
