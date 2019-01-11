@@ -12,16 +12,12 @@
                 </template>
                 <template v-else>{{ state ? '-' : '+' }}</template>
             </div>
-            <div class="bv-accordion__title" @click="toggle">
-                <slot name="title"></slot>
-            </div>
-            <div class="bv-accordion__actions">
-                <slot name="actions"></slot>
-            </div>
+            <div class="bv-accordion__title" @click="toggle"><slot name="title"></slot></div>
+            <div class="bv-accordion__actions"><slot name="actions"></slot></div>
         </header>
-        <article v-if="state" class="bv-accordion__content content">
-            <slot name="content"></slot>
-        </article>
+        <transition name="bv-accordion-toggle" @enter="enter" @after-enter="after - enter" @leave="leave">
+            <article v-if="state" class="bv-accordion__content content"><slot name="content"></slot></article>
+        </transition>
     </section>
 </template>
 
@@ -59,6 +55,38 @@ export default {
             if (!this.togglable) return;
             this.state = value;
             this.$emit('toggle', this.state);
+        },
+        enter(element) {
+            const width = getComputedStyle(element).width;
+
+            element.style.width = width;
+            element.style.position = 'absolute';
+            element.style.visibility = 'hidden';
+            element.style.height = 'auto';
+
+            const height = getComputedStyle(element).height;
+
+            element.style.width = null;
+            element.style.position = null;
+            element.style.visibility = null;
+            element.style.height = 0;
+
+            getComputedStyle(element).height;
+            this.$nextTick(() => {
+                element.style.height = height;
+            });
+        },
+        afterEnter(element) {
+            element.style.height = 'auto';
+        },
+        leave(element) {
+            const height = getComputedStyle(element).height;
+            element.style.height = height;
+
+            getComputedStyle(element).height;
+            this.$nextTick(() => {
+                element.style.height = 0;
+            });
         },
     },
 };
@@ -112,5 +140,19 @@ export default {
 }
 .bv-accordion__content {
     margin-bottom: 0.5rem;
+    will-change: height;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+.bv-accordion-toggle-enter-active,
+.bv-accordion-toggle-leave-active {
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.bv-accordion-toggle-enter,
+.bv-accordion-toggle-leave-to {
+    height: 0;
 }
 </style>
