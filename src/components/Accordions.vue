@@ -1,7 +1,5 @@
 <template>
-    <section class="bv-accordions">
-        <slot></slot>
-    </section>
+    <section class="bv-accordions"><slot></slot></section>
 </template>
 
 <script>
@@ -46,6 +44,11 @@ export default {
             if (accordionData.state !== 'true') return;
             for (const child of this.$children) {
                 if (child.id === accordionData.id) continue;
+                child.toggleFromOutside(false);
+            }
+        },
+        closeAllAccordions() {
+            for (const child of this.$children) {
                 child.toggleFromOutside(false);
             }
         },

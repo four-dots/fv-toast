@@ -5,8 +5,6 @@ import nanoid from 'nanoid';
 
 
 
-
-
 var Accordions = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',{staticClass:"bv-accordions"},[_vm._t("default")],2)},staticRenderFns: [],
     props: {
         single: {
@@ -48,6 +46,11 @@ var Accordions = {render: function(){var _vm=this;var _h=_vm.$createElement;var 
             if (accordionData.state !== 'true') return;
             for (const child of this.$children) {
                 if (child.id === accordionData.id) continue;
+                child.toggleFromOutside(false);
+            }
+        },
+        closeAllAccordions() {
+            for (const child of this.$children) {
                 child.toggleFromOutside(false);
             }
         },
