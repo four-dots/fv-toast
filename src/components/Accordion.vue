@@ -157,8 +157,9 @@ export default {
 .bv-accordion__content {
     margin-bottom: 0.5rem;
     will-change: height;
-    transform: translateZ(0);
+    // transform: translateZ(0);
     backface-visibility: hidden;
+    // perspective: 1000px;
 }
 .bv-accordion-toggle-enter-active,
 .bv-accordion-toggle-leave-active {
