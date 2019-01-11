@@ -3,3 +3,7 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~bulma/bulma';
+
+.bv-accordion__content {
+    margin-bottom: 2rem;
+}
