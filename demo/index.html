@@ -9,12 +9,12 @@
 
     <body>
         <main id="app">
-            <accordions>
-                <accordion v-for="accordion in accordions">
-                    <h3 slot="title" class="title is-4">{{ accordion.title }}</h3>
-                    <template slot="content">{{ accordion.content }}</template>
-                </accordion>
-            </accordions>
+            <!-- <accordions>
+            </accordions> -->
+            <accordion v-for="accordion in accordions">
+                <h3 slot="title" class="title is-4">{{ accordion.title }}</h3>
+                <template slot="content">{{ accordion.content }}</template>
+            </accordion>
         </main>
         <script src="dist/app.js"></script>
     </body>
