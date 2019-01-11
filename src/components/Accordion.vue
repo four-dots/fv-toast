@@ -56,11 +56,17 @@ export default {
         toggle() {
             if (!this.togglable) return;
             this.state = !this.state;
+            if (this.state === true) {
+                this.readyState = true;
+            }
             this.$emit('toggle', this.state);
         },
         toggleFromOutside(value) {
             if (!this.togglable) return;
             this.state = value;
+            if (this.state === true) {
+                this.readyState = true;
+            }
             this.$emit('toggle', this.state);
         },
         enter(element) {
@@ -83,8 +89,8 @@ export default {
                 element.style.height = height;
             });
         },
-        afterEnter() {
-            this.readyState = this.state;
+        afterEnter(element) {
+            element.style.height = 'auto';
         },
         leave(element) {
             const height = getComputedStyle(element).height;
