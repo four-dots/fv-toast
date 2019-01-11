@@ -15,7 +15,7 @@
             <div class="bv-accordion__title" @click="toggle"><slot name="title"></slot></div>
             <div class="bv-accordion__actions"><slot name="actions"></slot></div>
         </header>
-        <transition name="bv-accordion-toggle" @enter="enter" @after-enter="after - enter" @leave="leave">
+        <transition name="bv-accordion-toggle" @enter="enter" @after-enter="afterEnter" @leave="leave">
             <article v-if="state" class="bv-accordion__content content"><slot name="content"></slot></article>
         </transition>
     </section>
