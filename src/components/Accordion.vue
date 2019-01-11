@@ -159,7 +159,6 @@ export default {
     will-change: height;
     transform: translateZ(0);
     backface-visibility: hidden;
-    perspective: 1000px;
 }
 .bv-accordion-toggle-enter-active,
 .bv-accordion-toggle-leave-active {
