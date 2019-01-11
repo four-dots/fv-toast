@@ -3,7 +3,7 @@
         class="bv-accordion"
         :class="{'bv-accordion--without-toggle': !togglable}"
         :data-id="id"
-        :data-state="state"
+        :data-state="readyState"
     >
         <header class="bv-accordion__header">
             <div v-if="togglable" class="bv-accordion__toggle" @click="toggle">
@@ -15,7 +15,13 @@
             <div class="bv-accordion__title" @click="toggle"><slot name="title"></slot></div>
             <div class="bv-accordion__actions"><slot name="actions"></slot></div>
         </header>
-        <transition name="bv-accordion-toggle" @enter="enter" @after-enter="afterEnter" @leave="leave">
+        <transition
+            name="bv-accordion-toggle"
+            @enter="enter"
+            @after-enter="afterEnter"
+            @after-leave="afterLeave"
+            @leave="leave"
+        >
             <article v-if="state" class="bv-accordion__content content"><slot name="content"></slot></article>
         </transition>
     </section>
@@ -42,6 +48,7 @@ export default {
     data() {
         return {
             state: this.open,
+            readyState: this.open,
             id: nanoid(),
         };
     },
@@ -76,8 +83,8 @@ export default {
                 element.style.height = height;
             });
         },
-        afterEnter(element) {
-            element.style.height = 'auto';
+        afterEnter() {
+            this.readyState = this.state;
         },
         leave(element) {
             const height = getComputedStyle(element).height;
@@ -87,6 +94,9 @@ export default {
             this.$nextTick(() => {
                 element.style.height = 0;
             });
+        },
+        afterLeave() {
+            this.readyState = this.state;
         },
     },
 };
