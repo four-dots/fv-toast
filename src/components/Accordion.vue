@@ -163,7 +163,16 @@ export default {
 }
 .bv-accordion-toggle-enter-active,
 .bv-accordion-toggle-leave-active {
-    transition: height 0.3s ease-in-out, margin 0.3s;
+    overflow: hidden;
+}
+
+.bv-accordion-toggle-leave-active {
+    transition: height 0.3s ease-in-out, margin 0.3s 0.1s;
+    overflow: hidden;
+}
+
+.bv-accordion-toggle-enter-active {
+    transition: margin 0.3s, height 0.3s ease-in-out 0.1s;
     overflow: hidden;
 }
 
