@@ -172,7 +172,7 @@ export default {
 }
 
 .bv-accordion-toggle-enter-active {
-    transition: margin 0.3s, height 0.3s ease-in-out 0.1s;
+    transition: height 0.3s ease-in-out, margin 0.3s;
     overflow: hidden;
 }
 
