@@ -90,19 +90,23 @@
         methods: {
             toggle() {
                 if (!this.togglable) return;
-                this.state = !this.state;
-                if (this.state === true) {
-                    this.readyState = true;
-                }
-                this.$emit('toggle', this.state);
+                this.$nextTick(() => {
+                    this.state = !this.state;
+                    if (this.state === true) {
+                        this.readyState = true;
+                    }
+                    this.$emit('toggle', this.state);
+                });
             },
             toggleFromOutside(value) {
                 if (!this.togglable) return;
-                this.state = value;
-                if (this.state === true) {
-                    this.readyState = true;
-                }
-                this.$emit('toggle', this.state);
+                this.$nextTick(() => {
+                    this.state = value;
+                    if (this.state === true) {
+                        this.readyState = true;
+                    }
+                    this.$emit('toggle', this.state);
+                });
             },
             enter(element) {
                 const width = getComputedStyle(element).width;
