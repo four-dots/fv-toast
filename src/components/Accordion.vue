@@ -22,7 +22,9 @@
             @after-leave="afterLeave"
             @leave="leave"
         >
-            <article v-if="state" class="bv-accordion__content content"><slot name="content"></slot></article>
+            <article v-show="state" class="bv-accordion__content content">
+                <slot name="content" v-bind:state="state"></slot>
+            </article>
         </transition>
     </section>
 </template>
