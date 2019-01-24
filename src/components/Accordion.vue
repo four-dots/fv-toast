@@ -1,7 +1,7 @@
 <template>
     <section
         class="bv-accordion"
-        :class="{'bv-accordion--without-toggle': !togglable}"
+        :class="{'bv-accordion--without-toggle': !togglable, 'is-open': state}"
         :data-id="id"
         :data-state="readyState"
     >
