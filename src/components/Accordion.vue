@@ -66,7 +66,6 @@ export default {
             });
         },
         toggleFromOutside(value) {
-            if (!this.togglable) return;
             this.$nextTick(() => {
                 this.state = value;
                 if (this.state === true) {
