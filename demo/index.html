@@ -12,7 +12,9 @@
             <!-- <accordions>
             </accordions> -->
             <accordion v-for="accordion in accordions">
-                <h3 slot="title" class="title is-4">{{ accordion.title }}</h3>
+                <template #title>
+                    <h3 class="title is-4">{{ accordion.title }}</h3>
+                </template>
                 <template slot="content">{{ accordion.content }}</template>
             </accordion>
         </main>

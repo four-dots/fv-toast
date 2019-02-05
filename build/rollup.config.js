@@ -1,4 +1,6 @@
 import vue from 'rollup-plugin-vue'; // Handle .vue SFC files
+import commonjs from 'rollup-plugin-commonjs';
+
 export default {
     input: 'src/index.js', // Path relative to package.json
     external: ['nanoid'],
@@ -11,5 +13,6 @@ export default {
             css: true, // Dynamically inject css as a <style> tag
             compileTemplate: true, // Explicitly convert template to render function
         }),
+        commonjs(),
     ],
 };
