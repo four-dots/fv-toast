@@ -10,6 +10,9 @@ export default {
             type: Boolean,
         },
     },
+    data: () => ({
+        observer: null,
+    }),
     mounted() {
         if (!this.single) {
             return;
@@ -25,18 +28,21 @@ export default {
             child.toggleFromOutside(false);
         }
 
-        const observer = new MutationObserver(mutations => {
+        this.observer = new MutationObserver(mutations => {
             this.toggleAccordions(mutations[0]);
         });
 
         this.$nextTick(() => {
-            observer.observe(this.$el, {
+            this.observer.observe(this.$el, {
                 attributes: true,
                 attributeOldValue: true,
                 attributeFilter: ['data-state'],
                 subtree: true,
             });
         });
+    },
+    beforeDestroy() {
+        this.observer.disconnect();
     },
     methods: {
         toggleAccordions(mutation) {

@@ -1,23 +1,26 @@
 {
     "env": {
         "node": true,
-        "es6": true
+        "es6": true,
+        "jquery": true
     },
     "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
+        "parser": "babel-eslint",
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     },
-    "extends": ["plugin:vue/essential"],
     "rules": {
-        "semi": [2, "always"],
-        "strict": 0,
-        "quotes": [1, "single", "avoid-escape"],
-        "no-use-before-define": 0,
+        "comma-dangle": ["error", "always-multiline"],
+        "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": false}],
+        "no-use-before-define": ["error", {"functions": true, "classes": true}],
+        "no-lonely-if": "error",
+        "no-unused-vars": ["error", {"vars": "all", "args": "after-used"}],
         "curly": 0,
         "no-underscore-dangle": 0,
-        "no-lonely-if": 1,
-        "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],
         "no-mixed-requires": 0,
         "space-infix-ops": 0
-    }
+    },
+    "extends": ["plugin:prettier/recommended", "plugin:vue/essential"],
+    "plugins": ["html"]
 }
