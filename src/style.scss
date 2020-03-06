@@ -1,0 +1,79 @@
+.bv-accordion {
+    .bv-accordions & .bv-accordion__content {
+        margin-bottom: 0;
+    }
+
+    .bv-accordions &:last-child .bv-accordion__content {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.bv-accordion__header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.bv-accordion__toggle {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-right: 0.5rem;
+    font-size: 0.75rem;
+
+    .bv-accordion:not(.bv-accordion--without-toggle) & {
+        cursor: pointer;
+    }
+}
+
+.bv-accordion__actions {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.bv-accordion__title {
+    flex-basis: 100%;
+    flex-grow: 2;
+    flex-shrink: 1;
+
+    .title {
+        margin: 0;
+        line-height: 1;
+    }
+
+    .bv-accordion:not(.bv-accordion--without-toggle) & {
+        cursor: pointer;
+    }
+}
+
+.bv-accordion__content {
+    margin-bottom: 0.5rem;
+    will-change: height;
+    // transform: translateZ(0);
+    backface-visibility: hidden;
+    // perspective: 1000px;
+}
+
+.bv-accordion-toggle-enter-active,
+.bv-accordion-toggle-leave-active {
+    overflow: hidden;
+}
+
+.bv-accordion-toggle-leave-active {
+    transition: height 0.3s ease-in-out, margin 0.3s 0.1s;
+    overflow: hidden;
+}
+
+.bv-accordion-toggle-enter-active {
+    transition: height 0.3s ease-in-out, margin 0.3s;
+    overflow: hidden;
+}
+
+.bv-accordion-toggle-enter,
+.bv-accordion-toggle-leave-to {
+    height: 0;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
