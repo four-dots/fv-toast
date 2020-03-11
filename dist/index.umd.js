@@ -2,9 +2,9 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('nanoid')) :
     typeof define === 'function' && define.amd ? define(['exports', 'nanoid'], factory) :
     (global = global || self, factory(global.BulmaVueAccordion = {}, global.nanoid));
-}(this, function (exports, nanoid) { 'use strict';
+}(this, (function (exports, nanoid) { 'use strict';
 
-    nanoid = nanoid && nanoid.hasOwnProperty('default') ? nanoid['default'] : nanoid;
+    nanoid = nanoid && Object.prototype.hasOwnProperty.call(nanoid, 'default') ? nanoid['default'] : nanoid;
 
     //
     //
@@ -413,11 +413,11 @@
     }
     const version = '__VERSION__';
 
-    exports.default = plugin;
-    exports.Accordions = __vue_component__;
     exports.Accordion = __vue_component__$1;
+    exports.Accordions = __vue_component__;
+    exports.default = plugin;
     exports.version = version;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

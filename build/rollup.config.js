@@ -1,5 +1,4 @@
 import vue from 'rollup-plugin-vue'; // Handle .vue SFC files
-import commonjs from 'rollup-plugin-commonjs';
 import css from 'rollup-plugin-css-only';
 import babel from 'rollup-plugin-babel';
 
@@ -34,7 +33,6 @@ export default {
             css: false, // Dynamically inject css as a <style> tag
             compileTemplate: true, // Explicitly convert template to render function
         }),
-        commonjs(),
         babel({
             exclude: 'node_modules/**',
         }),

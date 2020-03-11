@@ -408,4 +408,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 const version = '__VERSION__';
 
 export default plugin;
-export { __vue_component__ as Accordions, __vue_component__$1 as Accordion, version };
+export { __vue_component__$1 as Accordion, __vue_component__ as Accordions, version };
