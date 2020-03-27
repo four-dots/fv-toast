@@ -1,6 +1,6 @@
 {
     "name": "bulma-vue-accordion",
-    "version": "1.1.24",
+    "version": "1.1.25",
     "main": "dist/index.umd.js",
     "module": "dist/index.esm.js",
     "unpkg": "dist/index.min.js",
@@ -18,7 +18,7 @@
     "peerDependencies": {
         "bulma": "^0.8",
         "lodash": "^4.17.5",
-        "nanoid": "^2.0.0",
+        "nanoid": "^3.0.0",
         "vue": "^2.5.16"
     },
     "devDependencies": {
@@ -26,11 +26,12 @@
         "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
         "babel-eslint": "^10.0.3",
         "eslint": "^6",
-        "eslint-config-prettier": "^6.1.0",
+        "eslint-config-prettier": "^6.10.1",
+        "eslint-loader": "^3.0.3",
         "eslint-plugin-html": "^6.0.0",
         "eslint-plugin-prettier": "^3.1.0",
-        "eslint-plugin-vue": "^6.0.0",
-        "prettier": "^1.15.3",
+        "eslint-plugin-vue": "^6.0",
+        "prettier": "^2.0.0",
         "rollup": "^2.0.0",
         "rollup-plugin-babel": "^4.3.3",
         "rollup-plugin-css-only": "^2.0.0",
