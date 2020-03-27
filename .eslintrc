@@ -1,8 +1,9 @@
 {
+    "extends": ["prettier", "plugin:prettier/recommended", "plugin:vue/essential"],
+    "plugins": ["html"],
     "env": {
         "node": true,
-        "es6": true,
-        "jquery": true
+        "es6": true
     },
     "parserOptions": {
         "parser": "babel-eslint",
@@ -19,8 +20,7 @@
         "curly": 0,
         "no-underscore-dangle": 0,
         "no-mixed-requires": 0,
-        "space-infix-ops": 0
-    },
-    "extends": ["plugin:prettier/recommended", "plugin:vue/essential"],
-    "plugins": ["html"]
+        "space-infix-ops": 0,
+        "linebreak-style": 0
+    }
 }

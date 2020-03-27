@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import nanoid from 'nanoid';
+import {nanoid} from 'nanoid';
 
 export default {
     props: {

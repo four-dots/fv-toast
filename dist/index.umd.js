@@ -4,8 +4,6 @@
     (global = global || self, factory(global.BulmaVueAccordion = {}, global.nanoid));
 }(this, (function (exports, nanoid) { 'use strict';
 
-    nanoid = nanoid && Object.prototype.hasOwnProperty.call(nanoid, 'default') ? nanoid['default'] : nanoid;
-
     //
     //
     //
@@ -213,7 +211,7 @@
         return {
           state: this.open,
           readyState: this.open,
-          id: nanoid()
+          id: nanoid.nanoid()
         };
       },
 

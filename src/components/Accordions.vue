@@ -28,7 +28,7 @@ export default {
             child.toggleFromOutside(false);
         }
 
-        this.observer = new MutationObserver(mutations => {
+        this.observer = new MutationObserver((mutations) => {
             this.toggleAccordions(mutations[0]);
         });
 
