@@ -1,9 +1,8 @@
 <template>
     <section
         class="bv-accordion"
+        :data-accordion-id="accordionId"
         :class="{'bv-accordion--without-toggle': !togglable, 'is-open': state}"
-        :data-id="id"
-        :data-state="readyState"
     >
         <header class="bv-accordion__header">
             <div v-if="togglable" class="bv-accordion__toggle" @click="toggle">
@@ -15,13 +14,7 @@
             <div class="bv-accordion__title" @click="toggle"><slot name="title"></slot></div>
             <div class="bv-accordion__actions"><slot name="actions"></slot></div>
         </header>
-        <transition
-            name="bv-accordion-toggle"
-            @enter="enter"
-            @after-enter="afterEnter"
-            @after-leave="afterLeave"
-            @leave="leave"
-        >
+        <transition name="bv-accordion-toggle" @enter="enter" @after-enter="afterEnter" @leave="leave">
             <article v-show="state" class="bv-accordion__content content">
                 <slot name="content" v-bind:state="state"></slot>
             </article>
@@ -30,9 +23,13 @@
 </template>
 
 <script>
+import {ref, nextTick, onBeforeUnmount, watch, inject} from 'vue';
 import {nanoid} from 'nanoid';
 
+import eventBus from './bus.js';
+
 export default {
+    name: 'bv-accordion',
     props: {
         usesFontAwesome: {
             type: Boolean,
@@ -47,34 +44,22 @@ export default {
             default: false,
         },
     },
-    data() {
-        return {
-            state: this.open,
-            readyState: this.open,
-            id: nanoid(),
+    emits: ['toggle'],
+    setup(props, {emit}) {
+        const state = ref(props.open);
+        const accordionId = nanoid();
+        const registerChild = inject('registerChild', null);
+
+        const toggle = async () => {
+            if (!props.togglable) return;
+            await nextTick();
+
+            state.value = !state.value;
+            emit('toggle', state.value);
+            eventBus.emit('accordion.toggle', {accordionId, state: state.value});
         };
-    },
-    methods: {
-        toggle() {
-            if (!this.togglable) return;
-            this.$nextTick(() => {
-                this.state = !this.state;
-                if (this.state === true) {
-                    this.readyState = true;
-                }
-                this.$emit('toggle', this.state);
-            });
-        },
-        toggleFromOutside(value) {
-            this.$nextTick(() => {
-                this.state = value;
-                if (this.state === true) {
-                    this.readyState = true;
-                }
-                this.$emit('toggle', this.state);
-            });
-        },
-        enter(element) {
+
+        const enter = async (element) => {
             const width = getComputedStyle(element).width;
 
             element.style.width = width;
@@ -90,27 +75,45 @@ export default {
             element.style.height = 0;
 
             getComputedStyle(element).height;
-            this.$nextTick(() => {
-                element.style.height = height;
-            });
-        },
-        afterEnter(element) {
+            await nextTick();
+            element.style.height = height;
+        };
+
+        const afterEnter = (element) => {
             element.style.height = 'auto';
-        },
-        leave(element) {
+        };
+
+        const leave = async (element) => {
             const height = getComputedStyle(element).height;
             element.style.height = height;
 
             getComputedStyle(element).height;
-            this.$nextTick(() => {
-                element.style.height = 0;
-            });
-        },
-        afterLeave() {
-            this.readyState = this.state;
-        },
+            await nextTick();
+            element.style.height = 0;
+        };
+
+        const close = (accordionsToClose) => {
+            if (!state.value || !props.togglable || !accordionsToClose.includes(accordionId)) return;
+            state.value = false;
+        };
+
+        eventBus.on('accordion.close', close);
+
+        if (registerChild) {
+            registerChild({id: accordionId, state: state.value});
+        }
+
+        onBeforeUnmount(() => eventBus.off('accordion.close'));
+
+        watch(
+            () => props.open,
+            (value) => {
+                if (value === state.value) return;
+                toggle();
+            }
+        );
+
+        return {accordionId, state, toggle, enter, afterEnter, leave};
     },
 };
 </script>
-
-<style lang="scss" src="../style.scss"></style>

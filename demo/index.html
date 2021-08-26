@@ -4,19 +4,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="dist/app.css" />
-        <title>Demo Accordion</title>
+        <title>Demo calendar</title>
     </head>
 
     <body>
         <main id="app">
-            <!-- <accordions>
-            </accordions> -->
-            <accordion v-for="accordion in accordions">
-                <template #title>
-                    <h3 class="title is-4">{{ accordion.title }}</h3>
-                </template>
-                <template slot="content">{{ accordion.content }}</template>
-            </accordion>
+            <div class="container">
+                <accordion v-for="(accordion, index) in accordions" :key="index">
+                    <template #title>{{ accordion.title }}</template>
+                    <template #content>{{ accordion.content }}</template>
+                </accordion>
+                <accordions>
+                    <accordion v-for="(accordion, index) in accordions" :key="index">
+                        <template #title>{{ accordion.title }}</template>
+                        <template #content>{{ accordion.content }}</template>
+                    </accordion>
+                </accordions>
+                <accordions :single="false">
+                    <accordion v-for="(accordion, index) in accordions" :open="true" :key="index">
+                        <template #title>{{ accordion.title }}</template>
+                        <template #content>{{ accordion.content }}</template>
+                    </accordion>
+                </accordions>
+            </div>
         </main>
         <script src="dist/app.js"></script>
     </body>
