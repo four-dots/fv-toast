@@ -91,11 +91,17 @@ const _sfc_main = {
     const state = ref(props.open);
     const accordionId = nanoid();
     const registerChild = inject("registerChild", null);
-    const toggle = async (newState) => {
-      if (!props.togglable && newState === void 0)
+    const toggle = async () => {
+      if (!props.togglable)
         return;
       await nextTick();
-      state.value = newState !== void 0 ? newState : !state.value;
+      state.value = !state.value;
+      emit("toggle", state.value);
+      emitter.emit("accordion.toggle", { accordionId, state: state.value });
+    };
+    const trigger = async (newState) => {
+      await nextTick();
+      state.value = newState;
       emit("toggle", state.value);
       emitter.emit("accordion.toggle", { accordionId, state: state.value });
     };
@@ -139,7 +145,7 @@ const _sfc_main = {
         return;
       toggle();
     });
-    return { accordionId, state, toggle, enter, afterEnter, leave };
+    return { accordionId, state, toggle, trigger, enter, afterEnter, leave };
   }
 };
 const _hoisted_1 = ["data-accordion-id"];
