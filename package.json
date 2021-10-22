@@ -1,6 +1,6 @@
 {
     "name": "bulma-vue-accordion",
-    "version": "1.1.27",
+    "version": "1.1.28",
     "main": "src/index.js",
     "module": "dist/index.esm.js",
     "repository": "git@bitbucket.org:fourdots/bulma-vue-accordion.git",
