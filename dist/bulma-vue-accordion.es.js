@@ -92,7 +92,7 @@ const _sfc_main = {
     const accordionId = nanoid();
     const registerChild = inject("registerChild", null);
     const toggle = async (newState) => {
-      if (!props.togglable)
+      if (!props.togglable && newState === void 0)
         return;
       await nextTick();
       state.value = newState !== void 0 ? newState : !state.value;

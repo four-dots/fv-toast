@@ -51,7 +51,7 @@ export default {
         const registerChild = inject('registerChild', null);
 
         const toggle = async (newState) => {
-            if (!props.togglable) return;
+            if (!props.togglable && newState === undefined) return;
             await nextTick();
 
             state.value = newState !== undefined ? newState : !state.value;
