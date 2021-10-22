@@ -50,11 +50,11 @@ export default {
         const accordionId = nanoid();
         const registerChild = inject('registerChild', null);
 
-        const toggle = async () => {
+        const toggle = async (newState) => {
             if (!props.togglable) return;
             await nextTick();
 
-            state.value = !state.value;
+            state.value = newState !== undefined ? newState : !state.value;
             emit('toggle', state.value);
             eventBus.emit('accordion.toggle', {accordionId, state: state.value});
         };

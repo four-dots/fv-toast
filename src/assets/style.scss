@@ -1,3 +1,12 @@
+.bv-accordion__content {
+    margin-bottom: 0.5rem;
+    will-change: height;
+    backface-visibility: hidden;
+
+    // transform: translateZ(0);
+    // perspective: 1000px;
+}
+
 .bv-accordion {
     .bv-accordions & .bv-accordion__content {
         margin-bottom: 0;
@@ -34,9 +43,7 @@
 }
 
 .bv-accordion__title {
-    flex-basis: 100%;
-    flex-grow: 2;
-    flex-shrink: 1;
+    flex: 2 1 100%;
 
     .title {
         margin: 0;
@@ -46,14 +53,6 @@
     .bv-accordion:not(.bv-accordion--without-toggle) & {
         cursor: pointer;
     }
-}
-
-.bv-accordion__content {
-    margin-bottom: 0.5rem;
-    will-change: height;
-    // transform: translateZ(0);
-    backface-visibility: hidden;
-    // perspective: 1000px;
 }
 
 .bv-accordion-toggle-enter-active,

@@ -2,10 +2,9 @@
     "extends": ["stylelint-prettier/recommended", "stylelint-config-standard"],
     "rules": {
         "indentation": 4,
-        "block-opening-brace-space-before": ["always"],
-        "block-opening-brace-newline-after": ["always"],
-        "block-closing-brace-newline-before": ["always"],
         "number-leading-zero": "always",
-        "at-rule-no-unknown": null
+        "at-rule-no-unknown": null,
+        "string-quotes": "single",
+        "selector-class-pattern": null
     }
 }
