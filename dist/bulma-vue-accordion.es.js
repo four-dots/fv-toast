@@ -3,10 +3,11 @@ import mitt from "mitt";
 import { nanoid } from "nanoid";
 const emitter = mitt();
 var _export_sfc = (sfc, props) => {
+  const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
-    sfc[key] = val;
+    target[key] = val;
   }
-  return sfc;
+  return target;
 };
 const _sfc_main$1 = {
   name: "bv-accordions",
@@ -203,7 +204,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   ], 10, _hoisted_1);
 }
 var Accordion = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
-var style = "";
+var style = /* @__PURE__ */ (() => ".bv-accordion__content{margin-bottom:.5rem;will-change:height;backface-visibility:hidden}.bv-accordions .bv-accordion .bv-accordion__content{margin-bottom:0}.bv-accordions .bv-accordion:last-child .bv-accordion__content{margin-bottom:.5rem}.bv-accordion__header{display:flex;align-items:center;padding:.5rem 0}.bv-accordion__toggle{flex-grow:0;flex-shrink:0;padding-right:.5rem;font-size:.75rem}.bv-accordion:not(.bv-accordion--without-toggle) .bv-accordion__toggle{cursor:pointer}.bv-accordion__actions{flex-grow:1;flex-shrink:1;display:flex;align-items:center;justify-content:flex-end}.bv-accordion__title{flex:2 1 100%}.bv-accordion__title .title{margin:0;line-height:1}.bv-accordion:not(.bv-accordion--without-toggle) .bv-accordion__title{cursor:pointer}.bv-accordion-toggle-enter-active,.bv-accordion-toggle-leave-active{overflow:hidden}.bv-accordion-toggle-leave-active{transition:height .3s ease-in-out,margin .3s .1s;overflow:hidden}.bv-accordion-toggle-enter-active{transition:height .3s ease-in-out,margin .3s;overflow:hidden}.bv-accordion-toggle-enter,.bv-accordion-toggle-leave-to{height:0;margin-bottom:0!important;margin-top:0!important}\n")();
 var index = (app) => {
   app.component("Accordion", Accordion);
   app.component("Accordions", Accordions);
