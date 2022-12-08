@@ -1,5 +1,5 @@
 {
-    "name": "fv-toast",
+    "name": "@fourdots/fv-toast",
     "version": "2.1.1",
     "main": "src/index.js",
     "module": "dist/fv-toast.mjs",
