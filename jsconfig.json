@@ -1,6 +1,7 @@
 {
     "include": ["./src/**/*", "./demo/app.js"],
     "compilerOptions": {
-        "baseUrl": "."
+        "baseUrl": ".",
+        "target": "es6"
     }
 }
