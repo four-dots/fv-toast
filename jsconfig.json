@@ -1,0 +1,6 @@
+{
+    "include": ["./src/**/*", "./demo/app.js"],
+    "compilerOptions": {
+        "baseUrl": "."
+    }
+}

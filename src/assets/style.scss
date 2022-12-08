@@ -1,0 +1,100 @@
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fv-toast--fade-out {
+    animation-name: fade-out;
+}
+
+.fv-toast--fade-in-up {
+    animation-name: fade-in-up;
+}
+
+.fv-toasts {
+    position: fixed;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    overflow: hidden;
+    z-index: 40;
+    pointer-events: none;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.fv-toast {
+    width: 100%;
+    display: flex;
+    pointer-events: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+.fv-toast__message {
+    cursor: default;
+    display: inline-flex;
+    align-items: center;
+    animation-duration: 150ms;
+    pointer-events: auto;
+    opacity: 0.92;
+    min-height: 3rem;
+    font-size: 1em;
+    border-radius: 4px;
+    background-color: hsl(0deg, 0%, 96%);
+
+    &--right {
+        align-self: flex-end;
+    }
+
+    &--left {
+        align-self: flex-start;
+    }
+
+    &--success {
+        background-color: #effaf5;
+        color: #257953;
+    }
+
+    &--info {
+        background-color: #eff5fb;
+        color: #296fa8;
+    }
+
+    &--warning {
+        background-color: #fffaeb;
+        color: #946c00;
+    }
+
+    &--danger {
+        background-color: #feecf0;
+        color: #cc0f35;
+    }
+}
+
+.fv-toast__text {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    word-break: break-word;
+}

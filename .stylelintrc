@@ -1,0 +1,8 @@
+{
+    "plugins": ["stylelint-prettier"],
+    "extends": ["stylelint-config-recommended-scss", "stylelint-config-recommended-vue", "stylelint-config-prettier"],
+    "rules": {
+        "no-descending-specificity": null,
+        "no-invalid-position-at-import-rule": null
+    }
+}
