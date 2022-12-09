@@ -6,7 +6,6 @@
     "repository": "git@github.com:four-dots/fv-toast.git",
     "author": "Kristijan Novaković <kristijan.novakovic@outlook.com>",
     "license": "MIT",
-    "private": true,
     "scripts": {
         "build": "vite build",
         "dev": "vite build --watch",
