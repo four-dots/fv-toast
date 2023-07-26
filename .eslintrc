@@ -33,13 +33,5 @@
         "space-infix-ops": 0,
         "linebreak-style": 0,
         "vue/no-setup-props-destructure": 0
-    },
-    "globals": {
-        "REPORTZ": "readonly",
-        "SOCKET": "readonly",
-        "CUSTOM_DATA": "readonly",
-        "fastspring": "readonly",
-        "ga": "readonly",
-        "dataLayer": "readonly"
     }
 }

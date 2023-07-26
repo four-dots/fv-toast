@@ -6,10 +6,18 @@
     >
         <header class="bv-accordion__header">
             <div v-if="togglable" class="bv-accordion__toggle" @click="toggle">
-                <template v-if="usesFontAwesome">
-                    <span class="icon"><i class="fas fal" :class="[state ? 'fa-minus' : 'fa-plus']"></i></span>
+                <template v-if="state">
+                    <span v-if="options.baseIconClass" class="icon"
+                        ><i :class="[options.baseIconClass, options.openClass]"></i
+                    ></span>
+                    <component v-if="options.openComponent" :is="options.openComponent"></component>
                 </template>
-                <template v-else>{{ state ? '-' : '+' }}</template>
+                <template v-else>
+                    <span v-if="options.baseIconClass" class="icon"
+                        ><i :class="[options.baseIconClass, options.closedClass]"></i
+                    ></span>
+                    <component v-if="options.closedComponent" :is="options.closedComponent"></component>
+                </template>
             </div>
             <div class="bv-accordion__title" @click="toggle"><slot name="title"></slot></div>
             <div class="bv-accordion__actions"><slot name="actions"></slot></div>
@@ -27,14 +35,11 @@ import {ref, nextTick, onBeforeUnmount, watch, inject} from 'vue';
 import {nanoid} from 'nanoid';
 
 import eventBus from './bus.js';
+import optionsStore from './options.js';
 
 export default {
     name: 'bv-accordion',
     props: {
-        usesFontAwesome: {
-            type: Boolean,
-            default: true,
-        },
         togglable: {
             type: Boolean,
             default: true,
@@ -121,7 +126,9 @@ export default {
             }
         );
 
-        return {accordionId, state, toggle, trigger, enter, afterEnter, leave};
+        const options = optionsStore.getOptions();
+
+        return {accordionId, state, toggle, trigger, enter, afterEnter, leave, options};
     },
 };
 </script>

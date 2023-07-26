@@ -57,13 +57,8 @@ export default {
 
         provide('registerChild', registerChild);
 
-        onMounted(() => {
-            eventBus.on('accordion.toggle', closeAccordions);
-        });
-
-        onBeforeUnmount(() => {
-            eventBus.off('accordion.toggle');
-        });
+        onMounted(() => eventBus.on('accordion.toggle', closeAccordions));
+        onBeforeUnmount(() => eventBus.off('accordion.toggle'));
     },
 };
 </script>

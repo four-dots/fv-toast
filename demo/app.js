@@ -12,5 +12,5 @@ const app = createApp({
     }),
 });
 
-app.use(Accordion);
+app.use(Accordion, {openClass: 'fa-minus-minus'});
 app.mount('#app');
