@@ -1,1 +1,1 @@
-bulma-vue-modal
+FV-toast

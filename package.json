@@ -1,12 +1,12 @@
 {
-    "name": "fv-toast",
-    "version": "2.1.0",
+    "name": "@fourdots/fv-toast",
+    "version": "2.1.6",
     "main": "src/index.js",
     "module": "dist/fv-toast.mjs",
     "repository": "git@github.com:four-dots/fv-toast.git",
     "author": "Kristijan Novaković <kristijan.novakovic@outlook.com>",
     "license": "MIT",
-    "private": true,
+    "private": false,
     "scripts": {
         "build": "vite build",
         "dev": "vite build --watch",
