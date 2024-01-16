@@ -72,9 +72,9 @@ const r = b(), x = (e, o) => {
     }, i = () => {
       o.value = !0, s = new M(n, e.duration);
     }, a = () => {
-      !e.dismissible || (e.onClick.apply(null, arguments), n());
+      e.dismissible && (e.onClick.apply(null, arguments), n());
     }, l = (d) => {
-      !e.pauseOnHover || (d ? s.pause() : s.resume());
+      e.pauseOnHover && (d ? s.pause() : s.resume());
     };
     return r.on("toast.clear", n), f(i), g(() => r.off("toast.clear", n)), { visible: o, parsedMessage: t, triggerClick: a, toggleTimer: l };
   }
@@ -106,7 +106,7 @@ function D(e, o, t, s, n, i) {
 const H = /* @__PURE__ */ x(A, [["render", D]]), c = /* @__PURE__ */ new Map(), E = (e) => {
   var t;
   const o = c.get(e);
-  !o || (o.unmount(), c.delete(e), (t = document.querySelector(`[data-toast-id="${e}"]`)) == null || t.remove());
+  o && (o.unmount(), c.delete(e), (t = document.querySelector(`[data-toast-id="${e}"]`)) == null || t.remove());
 }, O = (e, o = { toastState: "fv-toast__message--success" }) => (r.on("toast.delete", E), {
   open(t) {
     const s = w(), n = typeof t == "string" ? t : null;
@@ -128,12 +128,11 @@ const H = /* @__PURE__ */ x(A, [["render", D]]), c = /* @__PURE__ */ new Map(), 
   warning(t, s = {}) {
     return this.open({ message: t, toastState: "fv-toast__message--warning", ...s });
   }
-});
-const I = (e, o = {}) => {
+}), I = (e, o = {}) => {
   const t = document.createElement("div");
   t.id = "fv-toasts", t.className = "fv-toasts", document.body.appendChild(t), e.config.globalProperties.$toast = O(e, o), e.provide("toast", e.config.globalProperties.$toast);
 };
 export {
   I as default
 };
-//# sourceMappingURL=fv-toast.mjs.map
+//# sourceMappingURL=fv-toast.js.map
