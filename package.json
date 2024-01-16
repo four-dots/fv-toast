@@ -1,6 +1,6 @@
 {
     "name": "@fourdots/fv-toast",
-    "version": "2.1.6",
+    "version": "2.2.0",
     "main": "src/index.js",
     "module": "dist/fv-toast.js",
     "repository": "git@github.com:four-dots/fv-toast.git",
