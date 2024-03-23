@@ -9,7 +9,6 @@ export default defineConfig({
         lib: {
             entry: path.resolve(__dirname, 'src/index.js'),
             name: 'FVToast',
-            formats: ['es'],
         },
         rollupOptions: {
             external: ['marked', 'mitt', 'nanoid', 'vue'],

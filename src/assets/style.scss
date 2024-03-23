@@ -1,3 +1,17 @@
+:root {
+    --fv-toast--success-background-color: #effaf5;
+    --fv-toast--success-color: #257953;
+
+    --fv-toast--info-background-color: #eff5fb;
+    --fv-toast--info-color: #296fa8;
+
+    --fv-toast--warning-background-color: #fffaeb;
+    --fv-toast--warning-color: #946c00;
+
+    --fv-toast--danger-background-color: #feecf0;
+    --fv-toast--danger-color: #cc0f35;
+}
+
 @keyframes fade-out {
     from {
         opacity: 1;
@@ -73,23 +87,23 @@
     }
 
     &--success {
-        background-color: #effaf5;
-        color: #257953;
+        background-color: var(--fv-toast--success-background-color);
+        color: var(--fv-toast--success-color);
     }
 
     &--info {
-        background-color: #eff5fb;
-        color: #296fa8;
+        background-color: var(--fv-toast--info-background-color);
+        color: var(--fv-toast--info-color);
     }
 
     &--warning {
-        background-color: #fffaeb;
-        color: #946c00;
+        background-color: var(--fv-toast--warning-background-color);
+        color: var(--fv-toast--warning-color);
     }
 
     &--danger {
-        background-color: #feecf0;
-        color: #cc0f35;
+        background-color: var(--fv-toast--danger-background-color);
+        color: var(--fv-toast--danger-color);
     }
 }
 

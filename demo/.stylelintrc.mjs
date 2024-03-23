@@ -6,14 +6,13 @@ export default {
         'no-descending-specificity': null,
         'no-invalid-position-at-import-rule': null,
     },
-    ignoreFiles: ['**/*.html'],
     overrides: [
         {
-            files: ['**/*.(scss|css|vue)'],
+            files: ['**/*.(scss|css|html|vue)'],
             customSyntax: 'postcss-scss',
         },
         {
-            files: ['**/*.vue'],
+            files: ['**/*.(html|vue)'],
             customSyntax: 'postcss-html',
         },
     ],
