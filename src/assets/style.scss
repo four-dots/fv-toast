@@ -110,5 +110,6 @@
 .fv-toast__text {
     margin: 0;
     padding: 0.5rem 1rem;
-    word-break: break-word;
+    word-break: normal;
+    overflow-wrap: anywhere;
 }

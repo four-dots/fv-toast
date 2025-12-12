@@ -15,89 +15,83 @@
     </transition>
 </template>
 
-<script>
+<script setup>
 import {ref, onMounted, onBeforeUnmount} from 'vue';
 import {marked} from 'marked';
 
 import Timer from './timer.js';
 import eventBus from './bus.js';
 
-export default {
-    name: 'fv-toast',
-    props: {
-        toastId: {
-            type: String,
-            required: true,
-        },
-        message: {
-            type: String,
-            required: true,
-        },
-        toastState: {
-            type: String,
-            default: 'fv-toast__message--success',
-        },
-        position: {
-            type: String,
-            default: 'right',
-            validator: (value) => ['right', 'left'].includes(value),
-        },
-        duration: {
-            type: Number,
-            default: 3000,
-        },
-        dismissible: {
-            type: Boolean,
-            default: true,
-        },
-        onClose: {
-            type: Function,
-            default: () => {},
-        },
-        onClick: {
-            type: Function,
-            default: () => {},
-        },
-        pauseOnHover: {
-            type: Boolean,
-            default: true,
-        },
+const props = defineProps({
+    toastId: {
+        type: String,
+        required: true,
     },
-    setup(props) {
-        const visible = ref(false);
-        const parsedMessage = props.message && marked(props.message);
-
-        let timer = null;
-
-        const close = () => {
-            timer.stop();
-            visible.value = false;
-            props.onClose.apply(null, arguments);
-            setTimeout(() => eventBus.emit('toast.delete', props.toastId), 150);
-        };
-
-        const open = () => {
-            visible.value = true;
-            timer = new Timer(close, props.duration);
-        };
-
-        const triggerClick = () => {
-            if (!props.dismissible) return;
-            props.onClick.apply(null, arguments);
-            close();
-        };
-
-        const toggleTimer = (pause) => {
-            if (!props.pauseOnHover) return;
-            pause ? timer.pause() : timer.resume();
-        };
-
-        eventBus.on('toast.clear', close);
-
-        onMounted(open);
-        onBeforeUnmount(() => eventBus.off('toast.clear', close));
-
-        return {visible, parsedMessage, triggerClick, toggleTimer};
+    message: {
+        type: String,
+        required: true,
     },
+    toastState: {
+        type: String,
+        default: 'fv-toast__message--success',
+    },
+    position: {
+        type: String,
+        default: 'right',
+        validator: (value) => ['right', 'left'].includes(value),
+    },
+    duration: {
+        type: Number,
+        default: 3000,
+    },
+    dismissible: {
+        type: Boolean,
+        default: true,
+    },
+    onClose: {
+        type: Function,
+        default: () => {},
+    },
+    onClick: {
+        type: Function,
+        default: () => {},
+    },
+    pauseOnHover: {
+        type: Boolean,
+        default: true,
+    },
+});
+
+const visible = ref(false);
+const parsedMessage = props.message && marked(props.message);
+
+let timer = null;
+
+const close = () => {
+    timer?.stop();
+    visible.value = false;
+    props.onClose.apply(null, arguments);
+    setTimeout(() => eventBus.emit('toast.delete', props.toastId), 150);
 };
+
+const open = () => {
+    visible.value = true;
+    timer = new Timer(close, props.duration);
+};
+
+const triggerClick = () => {
+    if (!props.dismissible) return;
+    props.onClick.apply(null, arguments);
+    close();
+};
+
+const toggleTimer = (pause) => {
+    if (!props.pauseOnHover || timer === null) return;
+    pause ? timer.pause() : timer.resume();
+};
+
+eventBus.on('toast.clear', close);
+
+onMounted(open);
+onBeforeUnmount(() => eventBus.off('toast.clear', close));
 </script>

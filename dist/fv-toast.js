@@ -1,10 +1,10 @@
-import { ref as m, onMounted as f, onBeforeUnmount as g, openBlock as v, createBlock as p, Transition as _, withCtx as h, withDirectives as y, createElementVNode as u, normalizeClass as T, vShow as S, createApp as C } from "vue";
-import { marked as k } from "marked";
-import b from "mitt";
-import { nanoid as w } from "nanoid";
-class M {
-  constructor(o, t) {
-    this.startedAt = Date.now(), this.callback = o, this.delay = t, this.timer = setTimeout(o, t);
+import { ref as g, onMounted as v, onBeforeUnmount as h, createBlock as y, openBlock as _, Transition as S, withCtx as T, withDirectives as w, createElementVNode as f, normalizeClass as C, unref as b, vShow as k, createApp as M } from "vue";
+import { marked as A } from "marked";
+import B from "mitt";
+import { nanoid as $ } from "nanoid";
+class x {
+  constructor(e, t) {
+    this.startedAt = Date.now(), this.callback = e, this.delay = t, this.timer = setTimeout(e, t);
   }
   pause() {
     this.stop(), this.delay -= Date.now() - this.startedAt;
@@ -16,13 +16,8 @@ class M {
     clearTimeout(this.timer);
   }
 }
-const r = b(), x = (e, o) => {
-  const t = e.__vccOpts || e;
-  for (const [s, n] of o)
-    t[s] = n;
-  return t;
-}, A = {
-  name: "fv-toast",
+const i = B(), D = ["innerHTML"], H = {
+  __name: "Toast",
   props: {
     toastId: {
       type: String,
@@ -39,7 +34,7 @@ const r = b(), x = (e, o) => {
     position: {
       type: String,
       default: "right",
-      validator: (e) => ["right", "left"].includes(e)
+      validator: (s) => ["right", "left"].includes(s)
     },
     duration: {
       type: Number,
@@ -64,73 +59,68 @@ const r = b(), x = (e, o) => {
       default: !0
     }
   },
-  setup(e) {
-    const o = m(!1), t = e.message && k(e.message);
-    let s = null;
+  setup(s) {
+    const e = s, t = g(!1), o = e.message && A(e.message);
+    let a = null;
     const n = () => {
-      s.stop(), o.value = !1, e.onClose.apply(null, arguments), setTimeout(() => r.emit("toast.delete", e.toastId), 150);
-    }, i = () => {
-      o.value = !0, s = new M(n, e.duration);
-    }, a = () => {
+      a?.stop(), t.value = !1, e.onClose.apply(null, arguments), setTimeout(() => i.emit("toast.delete", e.toastId), 150);
+    }, r = () => {
+      t.value = !0, a = new x(n, e.duration);
+    }, l = () => {
       e.dismissible && (e.onClick.apply(null, arguments), n());
-    }, l = (d) => {
-      e.pauseOnHover && (d ? s.pause() : s.resume());
+    }, d = (m) => {
+      !e.pauseOnHover || a === null || (m ? a.pause() : a.resume());
     };
-    return r.on("toast.clear", n), f(i), g(() => r.off("toast.clear", n)), { visible: o, parsedMessage: t, triggerClick: a, toggleTimer: l };
+    return i.on("toast.clear", n), v(r), h(() => i.off("toast.clear", n)), (m, u) => (_(), y(S, {
+      "enter-active-class": "fv-toast--fade-in-up",
+      "leave-active-class": "fv-toast--fade-out"
+    }, {
+      default: T(() => [
+        w(f("div", {
+          role: "alert",
+          class: C(["fv-toast__message", [s.toastState, `fv-toast__message--${s.position}`]]),
+          onMouseover: u[0] || (u[0] = (p) => d(!0)),
+          onMouseleave: u[1] || (u[1] = (p) => d(!1)),
+          onClick: l
+        }, [
+          f("p", {
+            class: "fv-toast__text",
+            innerHTML: b(o)
+          }, null, 8, D)
+        ], 34), [
+          [k, t.value]
+        ])
+      ]),
+      _: 1
+    }));
   }
-}, B = ["innerHTML"];
-function D(e, o, t, s, n, i) {
-  return v(), p(_, {
-    "enter-active-class": "fv-toast--fade-in-up",
-    "leave-active-class": "fv-toast--fade-out"
-  }, {
-    default: h(() => [
-      y(u("div", {
-        role: "alert",
-        class: T(["fv-toast__message", [t.toastState, `fv-toast__message--${t.position}`]]),
-        onMouseover: o[0] || (o[0] = (a) => s.toggleTimer(!0)),
-        onMouseleave: o[1] || (o[1] = (a) => s.toggleTimer(!1)),
-        onClick: o[2] || (o[2] = (...a) => s.triggerClick && s.triggerClick(...a))
-      }, [
-        u("p", {
-          class: "fv-toast__text",
-          innerHTML: s.parsedMessage
-        }, null, 8, B)
-      ], 34), [
-        [S, s.visible]
-      ])
-    ]),
-    _: 1
-  });
-}
-const H = /* @__PURE__ */ x(A, [["render", D]]), c = /* @__PURE__ */ new Map(), E = (e) => {
-  var t;
-  const o = c.get(e);
-  o && (o.unmount(), c.delete(e), (t = document.querySelector(`[data-toast-id="${e}"]`)) == null || t.remove());
-}, O = (e, o = { toastState: "fv-toast__message--success" }) => (r.on("toast.delete", E), {
+}, c = /* @__PURE__ */ new Map(), E = (s) => {
+  const e = c.get(s);
+  e && (e.unmount(), c.delete(s), document.querySelector(`[data-toast-id="${s}"]`)?.remove());
+}, q = (s, e = { toastState: "fv-toast__message--success" }) => (i.on("toast.delete", E), {
   open(t) {
-    const s = w(), n = typeof t == "string" ? t : null;
+    const o = $(), a = typeof t == "string" ? t : null;
     t = typeof t == "string" ? {} : t;
-    const i = { message: n, toastId: s, ...o, ...t }, a = document.createElement("div");
-    a.setAttribute("data-toast-id", s), a.classList.add("fv-toast");
-    const l = C(H, i);
-    l.mount(a), document.getElementById("fv-toasts").appendChild(a), c.set(s, l);
+    const n = { message: a, toastId: o, ...e, ...t }, r = document.createElement("div");
+    r.setAttribute("data-toast-id", o), r.classList.add("fv-toast");
+    const l = M(H, n);
+    l.mount(r), document.getElementById("fv-toasts").appendChild(r), c.set(o, l);
   },
   clear() {
-    r.emit("toast.clear");
+    i.emit("toast.clear");
   },
-  error(t, s = {}) {
-    return this.open({ message: t, toastState: "fv-toast__message--danger", ...s });
+  error(t, o = {}) {
+    return this.open({ message: t, toastState: "fv-toast__message--danger", ...o });
   },
-  info(t, s = {}) {
-    return this.open({ message: t, toastState: "fv-toast__message--info", ...s });
+  info(t, o = {}) {
+    return this.open({ message: t, toastState: "fv-toast__message--info", ...o });
   },
-  warning(t, s = {}) {
-    return this.open({ message: t, toastState: "fv-toast__message--warning", ...s });
+  warning(t, o = {}) {
+    return this.open({ message: t, toastState: "fv-toast__message--warning", ...o });
   }
-}), I = (e, o = {}) => {
+}), I = (s, e = {}) => {
   const t = document.createElement("div");
-  t.id = "fv-toasts", t.className = "fv-toasts", document.body.appendChild(t), e.config.globalProperties.$toast = O(e, o), e.provide("toast", e.config.globalProperties.$toast);
+  t.id = "fv-toasts", t.className = "fv-toasts", document.body.appendChild(t), s.config.globalProperties.$toast = q(s, e), s.provide("toast", s.config.globalProperties.$toast);
 };
 export {
   I as default
