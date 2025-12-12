@@ -16,7 +16,10 @@
         "./*.css": "./dist/*.css",
         "./assets/*": "./src/assets/*"
     },
-    "repository": "git@github.com:four-dots/fv-toast.git",
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/four-dots/fv-toast.git"
+    },
     "author": "Kristijan Novaković <kristijan@codebrick.dev>",
     "license": "MIT",
     "private": false,
