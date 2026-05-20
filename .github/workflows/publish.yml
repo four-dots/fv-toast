@@ -7,27 +7,31 @@ on:
 jobs:
     build_and_publish:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [20]
         permissions:
             contents: read
             id-token: write
         steps:
-            - uses: actions/checkout@v5
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: '20.x'
-                  registry-url: 'https://registry.npmjs.org'
-            - name: Update npm
-              run: npm install -g npm@latest
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
-            - name: Use Node.js ${{ matrix.node-version }}
+            - uses: actions/checkout@v6 # update to latest
+
+            - name: Setup Node.js (latest LTS)
               uses: actions/setup-node@v4
               with:
-                  node-version: ${{ matrix.node-version }}
+                  node-version: 'lts/*' # always resolves to latest LTS
+                  registry-url: 'https://registry.npmjs.org'
                   cache: 'pnpm'
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  run_install: false
+
             - name: Install dependencies
               run: pnpm install
-            - run: npm publish --access=public
+
+            - name: Build package
+              run: pnpm run build
+
+            - name: Publish to npm
+              run: pnpm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
