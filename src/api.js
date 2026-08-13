@@ -44,7 +44,7 @@ export default (app, globalOptions = {toastState: 'fv-toast__message--success'})
             return this.open({message, toastState: 'fv-toast__message--success', ...options});
         },
         error(message, options = {}) {
-            return this.open({message, toastState: 'fv-toast__message--danger', ...options});
+            return this.open({message, toastState: 'fv-toast__message--danger', duration: 5_000, ...options});
         },
         info(message, options = {}) {
             return this.open({message, toastState: 'fv-toast__message--info', ...options});
