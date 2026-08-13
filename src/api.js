@@ -40,6 +40,9 @@ export default (app, globalOptions = {toastState: 'fv-toast__message--success'})
         clear() {
             eventBus.emit('toast.clear');
         },
+        success(message, options = {}) {
+            return this.open({message, toastState: 'fv-toast__message--success', ...options});
+        },
         error(message, options = {}) {
             return this.open({message, toastState: 'fv-toast__message--danger', ...options});
         },
